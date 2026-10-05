@@ -48,6 +48,9 @@ if st.button("Calcular Dimensiones ▶️", use_container_width=True):
     base_calculada = peralte_final / 2
     base_final = 0.25 if base_calculada < 0.25 else base_calculada
         
+        # Redondeamos también la base al múltiplo de 5 cm superior por constructibilidad
+    base_final = math.ceil(base_final / 0.05) * 0.05
+        
     st.success("### 🧱 RESULTADOS DE DISEÑO")
-    st.metric(label="📐 Peralte Redondeado (h)", value=f"{peralte_final:.2f} m  ({int(peralte_final * 100)} cm)")
-    st.metric(label="🧱 Base Final Sugerida (b)", value=f"{base_final:.2f} m  ({int(base_final * 100)} cm)")
+    st.metric(label="📐 Peralte Redondeado (h)", value=f"{peralte_final:.2f} m  ({int(round(peralte_final * 100))} cm)")
+    st.metric(label="🧱 Base Final Sugerida (b)", value=f"{base_final:.2f} m  ({int(round(base_final * 100))} cm)")
